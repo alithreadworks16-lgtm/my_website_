@@ -1,128 +1,102 @@
-
-    * {
-    box-sizing: border-box;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* ===== BODY ===== */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: #e2e8f0;
+    color: #f8fafc;
     min-height: 100vh;
-    padding: 30px 15px;
+    padding: 40px 20px;
+    line-height: 1.7;
 }
 
-body > * {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+/* ===== MAIN CONTENT ===== */
+body {
+    max-width: 900px;
+    margin: auto;
 }
 
-/* Main headings */
-
+/* ===== HEADINGS ===== */
 h1 {
     text-align: center;
-    color: #38bdf8;
     font-size: 42px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    color: #38bdf8;
 }
 
 h2 {
-    color: #f8fafc;
-    font-size: 26px;
-    margin-top: 30px;
+    margin-top: 35px;
     margin-bottom: 12px;
+    color: #22d3ee;
+    font-size: 28px;
 }
 
 h3 {
-    color: #38bdf8;
-    font-size: 24px;
-    margin-top: 30px;
-    margin-bottom: 12px;
+    margin-top: 35px;
+    color: #22d3ee;
+    font-size: 25px;
 }
 
-/* Paragraphs */
-
+/* ===== PARAGRAPHS ===== */
 p {
-    color: #cbd5e1;
     font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 15px;
+    color: #cbd5e1;
+    margin-bottom: 10px;
 }
 
-/* Hobbies */
-
+/* ===== HOBBIES ===== */
 ul {
     list-style: none;
-    margin: 15px 0;
+    margin-top: 15px;
 }
 
 li {
     background: #1e293b;
     border: 1px solid #334155;
-    border-radius: 10px;
-    padding: 12px 18px;
+    padding: 14px 18px;
     margin: 10px 0;
-    color: #e2e8f0;
-    font-size: 18px;
+    border-radius: 12px;
     transition: 0.3s;
 }
 
 li:hover {
-    transform: translateX(5px);
+    transform: translateX(8px);
     border-color: #38bdf8;
     background: #263449;
 }
 
-/* Links */
-
+/* ===== LINKS ===== */
 a {
+    display: inline-block;
     color: #38bdf8;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 17px;
+    margin-bottom: 12px;
     transition: 0.3s;
 }
 
 a:hover {
-    color: #7dd3fc;
-    text-decoration: underline;
+    color: #67e8f9;
+    transform: translateX(4px);
 }
 
-/* Contact links */
-
+/* ===== EMAIL ===== */
 .email-link {
-    display: inline-block;
-    background: #1e293b;
+    background: #0f172a;
     border: 1px solid #334155;
-    padding: 12px 16px;
+    padding: 10px 15px;
     border-radius: 10px;
-    margin-bottom: 10px;
-    max-width: 100%;
-    overflow-wrap: anywhere;
 }
 
-a[href^="https://wa.me"] {
-    display: inline-block;
-    background: #166534;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    margin-top: 5px;
-}
-
-a[href^="https://wa.me"]:hover {
-    background: #15803d;
-    text-decoration: none;
-    transform: translateY(-2px);
-}
-
-/* Mobile */
-
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 600px) {
 
     body {
-        padding: 25px 18px;
+        padding: 25px 16px;
     }
 
     h1 {
@@ -130,16 +104,23 @@ a[href^="https://wa.me"]:hover {
     }
 
     h2 {
-        font-size: 23px;
+        font-size: 24px;
     }
 
     h3 {
-        font-size: 21px;
+        font-size: 22px;
     }
 
-    p,
-    li,
+    p {
+        font-size: 16px;
+    }
+
+    li {
+        padding: 12px 15px;
+    }
+
     a {
-        font-size: 17px;
+        font-size: 15px;
+        word-break: break-word;
     }
 }

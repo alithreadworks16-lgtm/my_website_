@@ -1,4 +1,5 @@
-// Button click animation
+// ===== BUTTON ANIMATION =====
+
 const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach(button => {
@@ -12,7 +13,8 @@ buttons.forEach(button => {
 });
 
 
-// Scroll reveal animation
+// ===== SCROLL ANIMATION =====
+
 const cards = document.querySelectorAll(
     ".section, .skill-card, .project-card, .about-card, .goal, .contact-card"
 );
@@ -31,3 +33,22 @@ cards.forEach(card => {
     card.classList.add("hidden");
     observer.observe(card);
 });
+
+
+// ===== TYPING EFFECT =====
+
+const typingText = document.getElementById("typing-text");
+
+const text = "Future Web Developer 💻";
+
+let index = 0;
+
+function typeEffect() {
+    if (index < text.length) {
+        typingText.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 100);
+    }
+}
+
+typeEffect();

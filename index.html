@@ -4,106 +4,279 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
-
     <title>Alihassan Tech | Web Developer</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- NAVBAR -->
     <header>
-        <nav>
-            <h2>Alihassan Tech</h2>
+        <nav class="navbar">
+            <a href="#home" class="logo">Alihassan<span>Tech</span></a>
 
-            <div>
+            <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
         </nav>
     </header>
 
 
-    <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
 
-        <section id="home" class="hero">
+        <div class="hero-text">
+
             <p class="welcome">ASSALAM-O-ALAIKUM 👋</p>
 
-            <h1>I'm <span>Alihassan</span></h1>
+            <h1>
+                I'm <span>Alihassan</span>
+            </h1>
 
-            <h2>Future Web Developer</h2>
+            <h2>Future Web Developer 💻</h2>
 
             <p>
                 I'm learning Web Development and building my skills
                 step by step to become a professional developer.
             </p>
 
-            <a class="btn" href="#contact">Contact Me</a>
-        </section>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+
+        </div>
+
+        <div class="hero-card">
+            <div class="code-icon">&lt;/&gt;</div>
+            <h3>Web Developer</h3>
+            <p>Learning • Building • Improving</p>
+        </div>
+
+    </section>
 
 
-        <section id="about">
+    <!-- ABOUT -->
+    <section id="about" class="section">
+
+        <div class="section-title">
+            <span></span>
             <h2>About Me</h2>
+        </div>
 
-            <p>
-                My name is Alihassan. I'm interested in technology,
-                coding and web development. My goal is to become
-                a professional web developer.
-            </p>
-        </section>
+        <div class="about-card">
+
+            <div class="about-icon">👨‍💻</div>
+
+            <div>
+                <h3>Hi, I'm Alihassan</h3>
+
+                <p>
+                    My name is Alihassan. I'm interested in technology,
+                    coding and web development. I'm currently learning
+                    modern web development and improving my skills
+                    step by step.
+                </p>
+
+                <p>
+                    My goal is to become a professional web developer,
+                    create modern websites and work with clients
+                    around the world.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
 
 
-        <section id="skills">
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+
+        <div class="section-title">
+            <span></span>
             <h2>My Skills</h2>
+        </div>
 
-            <div class="cards">
+        <div class="skills-grid">
 
-                <div class="card">
+            <div class="skill-card">
+                <div class="skill-top">
                     <h3>HTML</h3>
-                    <p>Learning to build modern website structures.</p>
+                    <span>Beginner</span>
                 </div>
 
-                <div class="card">
+                <p>Building website structures with clean HTML.</p>
+
+                <div class="progress">
+                    <div class="progress-bar html"></div>
+                </div>
+            </div>
+
+
+            <div class="skill-card">
+                <div class="skill-top">
                     <h3>CSS</h3>
-                    <p>Learning professional website styling and design.</p>
+                    <span>Learning</span>
                 </div>
 
-                <div class="card">
+                <p>Creating modern designs and responsive layouts.</p>
+
+                <div class="progress">
+                    <div class="progress-bar css"></div>
+                </div>
+            </div>
+
+
+            <div class="skill-card">
+                <div class="skill-top">
                     <h3>Web Development</h3>
-                    <p>Building my foundation for becoming a web developer.</p>
+                    <span>Learning</span>
+                </div>
+
+                <p>Building my foundation for becoming a web developer.</p>
+
+                <div class="progress">
+                    <div class="progress-bar web"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+
+        <div class="section-title">
+            <span></span>
+            <h2>My Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+
+                <div class="project-number">01</div>
+
+                <h3>Personal Portfolio</h3>
+
+                <p>
+                    A modern personal portfolio website created
+                    using HTML and CSS.
+                </p>
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
                 </div>
 
             </div>
-        </section>
 
 
-        <section>
-            <h2>My Goal 🎯</h2>
+            <div class="project-card">
+
+                <div class="project-number">02</div>
+
+                <h3>Future Project</h3>
+
+                <p>
+                    More exciting web development projects
+                    will be added here as I continue learning.
+                </p>
+
+                <div class="project-tags">
+                    <span>Coming Soon</span>
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">03</div>
+
+                <h3>More Projects</h3>
+
+                <p>
+                    My future projects and experiments will
+                    appear here.
+                </p>
+
+                <div class="project-tags">
+                    <span>Learning</span>
+                    <span>Building</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GOAL -->
+    <section class="goal">
+
+        <div class="goal-icon">🎯</div>
+
+        <h2>My Goal</h2>
+
+        <p>
+            Become a professional web developer, create modern
+            websites and work with clients around the world.
+        </p>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+
+        <div class="section-title">
+            <span></span>
+            <h2>Contact Me</h2>
+        </div>
+
+        <div class="contact-card">
+
+            <h3>Let's Work Together 🤝</h3>
 
             <p>
-                My goal is to become a professional web developer,
-                create modern websites and work with clients around
-                the world.
+                Want to connect with me or discuss a project?
+                Feel free to contact me.
             </p>
-        </section>
 
-
-        <section id="contact">
-            <h2>Contact Me</h2>
-
-            <p>Want to connect with me?</p>
-
-            <a class="email-link" href="mailto:alihassantech375@gmail.com">
+            <a href="mailto:your-email@gmail.com" class="btn">
                 Email Me
             </a>
-        </section>
 
-    </main>
+        </div>
+
+    </section>
 
 
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 Alihassan Tech. All Rights Reserved.</p>
+
+        <div class="footer-logo">
+            Alihassan<span>Tech</span>
+        </div>
+
+        <p>
+            © 2026 Alihassan Tech. All Rights Reserved.
+        </p>
+
+        <p class="footer-small">
+            Built with HTML & CSS 💙
+        </p>
+
     </footer>
 
 </body>

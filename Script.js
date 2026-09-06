@@ -1,8 +1,5 @@
-// Welcome message
-console.log("Welcome to Ali Hassan Tech 🚀");
-
-// Button animation
-const buttons = document.querySelectorAll("a");
+// Button click animation
+const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
@@ -14,3 +11,23 @@ buttons.forEach(button => {
     });
 });
 
+
+// Scroll reveal animation
+const cards = document.querySelectorAll(
+    ".section, .skill-card, .project-card, .about-card, .goal, .contact-card"
+);
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+cards.forEach(card => {
+    card.classList.add("hidden");
+    observer.observe(card);
+});

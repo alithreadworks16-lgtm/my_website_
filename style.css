@@ -92,7 +92,9 @@ font-size: 21px;
 display: none;
 font-size: 28px;
 }
-
+.btn.clicked {
+    transform: scale(0.94);
+}
 /* ================= HERO ================= */
 
 .hero {

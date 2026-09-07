@@ -61,3 +61,17 @@ const navLinks = document.querySelector(".nav-links");
 menuBtn.addEventListener("click", () => {
     navLinks.classList.toggle("active");
 });
+
+// ===== DARK / LIGHT MODE =====
+
+const themeBtn = document.getElementById("theme-btn");
+
+themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+        themeBtn.textContent = "🌙";
+    } else {
+        themeBtn.textContent = "☀️";
+    }
+});

@@ -623,3 +623,35 @@ footer {
         display: block;
     }
 }
+
+/* ===== THEME BUTTON ===== */
+
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+body.light-mode {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+body.light-mode .navbar {
+    background: #ffffff;
+}
+
+body.light-mode .nav-links a {
+    color: #0f172a;
+}
+
+body.light-mode .section,
+body.light-mode .about-card,
+body.light-mode .skill-card,
+body.light-mode .project-card,
+body.light-mode .contact-card {
+    background: #ffffff;
+    color: #0f172a;
+}

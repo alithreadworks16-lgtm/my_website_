@@ -4,34 +4,35 @@ const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-        button.style.transform = "scale(0.95)";
+        button.classList.add("clicked");
 
         setTimeout(() => {
-            button.style.transform = "scale(1)";
-        }, 150);
+            button.classList.remove("clicked");
+        }, 180);
     });
 });
 
 
 // ===== SCROLL ANIMATION =====
 
-const cards = document.querySelectorAll(
-    ".section, .skill-card, .project-card, .about-card, .goal, .contact-card"
+const animatedElements = document.querySelectorAll(
+    ".section, .skill-card, .project-card, .about-card, .service-card, .goal, .contact-card"
 );
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add("show");
+            observer.unobserve(entry.target);
         }
     });
 }, {
-    threshold: 0.15
+    threshold: 0.12
 });
 
-cards.forEach(card => {
-    card.classList.add("hidden");
-    observer.observe(card);
+animatedElements.forEach(element => {
+    element.classList.add("hidden");
+    observer.observe(element);
 });
 
 
@@ -39,19 +40,48 @@ cards.forEach(card => {
 
 const typingText = document.getElementById("typing-text");
 
-const text = "Future Web Developer 💻";
+const texts = [
+    "Future Web Developer 💻",
+    "HTML & CSS Learner 🚀",
+    "JavaScript Learner ⚡"
+];
 
-let index = 0;
+let textIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
 function typeEffect() {
-    if (index < text.length) {
-        typingText.textContent += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, 100);
+
+    const currentText = texts[textIndex];
+
+    if (!deleting) {
+        typingText.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex === currentText.length) {
+            deleting = true;
+            setTimeout(typeEffect, 1500);
+            return;
+        }
+
+        setTimeout(typeEffect, 90);
+
+    } else {
+
+        typingText.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+            deleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+        }
+
+        setTimeout(typeEffect, 50);
     }
 }
 
 typeEffect();
+
 
 // ===== MOBILE MENU =====
 
@@ -62,16 +92,40 @@ menuBtn.addEventListener("click", () => {
     navLinks.classList.toggle("active");
 });
 
+
+// Close menu after clicking a link
+
+const navItems = document.querySelectorAll(".nav-links a");
+
+navItems.forEach(item => {
+    item.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+    });
+});
+
+
 // ===== DARK / LIGHT MODE =====
 
 const themeBtn = document.getElementById("theme-btn");
 
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+    themeBtn.textContent = "🌙";
+} else {
+    themeBtn.textContent = "☀️";
+}
+
 themeBtn.addEventListener("click", () => {
+
     document.body.classList.toggle("light-mode");
 
     if (document.body.classList.contains("light-mode")) {
         themeBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
     } else {
         themeBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
     }
 });

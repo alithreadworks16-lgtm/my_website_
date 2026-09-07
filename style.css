@@ -589,3 +589,37 @@ footer {
 .about-card:hover {
     transform: translateY(-8px);
 }
+
+/* ===== MOBILE NAVBAR ===== */
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #1e293b;
+        padding: 20px;
+        border-radius: 12px;
+        gap: 15px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+}

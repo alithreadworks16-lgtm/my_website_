@@ -723,3 +723,27 @@ background: #e2e8f0;
 }
 
 }
+
+body {
+    background: #0f172a;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #38bdf8;
+}
+
+p {
+    font-size: 18px;
+}
+
+button {
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

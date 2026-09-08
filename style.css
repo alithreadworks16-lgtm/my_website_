@@ -747,3 +747,23 @@ button {
     border-radius: 8px;
     cursor: pointer;
 }
+
+h1 {
+    color: #38bdf8;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+button {
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

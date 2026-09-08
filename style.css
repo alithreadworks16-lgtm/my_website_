@@ -767,3 +767,22 @@ button {
     border-radius: 8px;
     cursor: pointer;
 }
+
+.about-card {
+    background: #1e293b;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-card h3 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+}
+
+.about-card p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}

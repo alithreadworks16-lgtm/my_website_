@@ -91,12 +91,59 @@
     <ul id="taskList"></ul>
 
 </div>
-
 <script>
-
     const input = document.getElementById("taskInput");
     const button = document.getElementById("addButton");
     const list = document.getElementById("taskList");
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    function saveTasks() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function showTasks() {
+        list.innerHTML = "";
+
+        tasks.forEach(function(task, index) {
+
+            const li = document.createElement("li");
+
+            const taskText = document.createElement("span");
+            taskText.textContent = task.text;
+            taskText.className = "task";
+
+            if (task.done) {
+                taskText.classList.add("done");
+            }
+
+            const doneButton = document.createElement("button");
+            doneButton.textContent = "Done";
+            doneButton.className = "done-btn";
+
+            doneButton.addEventListener("click", function() {
+                tasks[index].done = !tasks[index].done;
+                saveTasks();
+                showTasks();
+            });
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.className = "delete-btn";
+
+            deleteButton.addEventListener("click", function() {
+                tasks.splice(index, 1);
+                saveTasks();
+                showTasks();
+            });
+
+            li.appendChild(taskText);
+            li.appendChild(doneButton);
+            li.appendChild(deleteButton);
+
+            list.appendChild(li);
+        });
+    }
 
     button.addEventListener("click", function() {
 
@@ -107,38 +154,18 @@
             return;
         }
 
-        const li = document.createElement("li");
-
-        const taskText = document.createElement("span");
-        taskText.textContent = task;
-        taskText.className = "task";
-
-        const doneButton = document.createElement("button");
-        doneButton.textContent = "Done";
-        doneButton.className = "done-btn";
-
-        doneButton.addEventListener("click", function() {
-            taskText.classList.toggle("done");
+        tasks.push({
+            text: task,
+            done: false
         });
 
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.className = "delete-btn";
-
-        deleteButton.addEventListener("click", function() {
-            li.remove();
-        });
-
-        li.appendChild(taskText);
-        li.appendChild(doneButton);
-        li.appendChild(deleteButton);
-
-        list.appendChild(li);
+        saveTasks();
+        showTasks();
 
         input.value = "";
-
     });
 
+    showTasks();
 </script>
 
 </body>

@@ -21,9 +21,10 @@
 
         input {
             padding: 12px;
-            width: 65%;
+            width: 60%;
             border: none;
             border-radius: 8px;
+            font-size: 16px;
         }
 
         button {
@@ -32,6 +33,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            font-size: 16px;
         }
 
         li {
@@ -46,33 +48,41 @@
 
 <body>
 
-    <div class="container">
-        <h1>My To-Do List</h1>
+<div class="container">
 
-        <input type="text" id="taskInput" placeholder="Enter your task">
-        <button onclick="addTask()">Add</button>
+    <h1>My To-Do List</h1>
 
-        <ul id="taskList"></ul>
-    </div>
+    <input type="text" id="taskInput" placeholder="Enter your task">
 
-    <script>
-        function addTask() {
-            let input = document.getElementById("taskInput");
-            let task = input.value.trim();
+    <button id="addButton">Add</button>
 
-            if (task === "") {
-                alert("Please enter a task!");
-                return;
-            }
+    <ul id="taskList"></ul>
 
-            let li = document.createElement("li");
-            li.textContent = task;
+</div>
 
-            document.getElementById("taskList").appendChild(li);
+<script>
+    const input = document.getElementById("taskInput");
+    const button = document.getElementById("addButton");
+    const list = document.getElementById("taskList");
 
-            input.value = "";
+    button.addEventListener("click", function() {
+
+        const task = input.value.trim();
+
+        if (task === "") {
+            alert("Please enter your task");
+            return;
         }
-    </script>
+
+        const li = document.createElement("li");
+
+        li.textContent = task;
+
+        list.appendChild(li);
+
+        input.value = "";
+    });
+</script>
 
 </body>
 </html>

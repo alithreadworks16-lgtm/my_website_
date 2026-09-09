@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do List</title>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        input {
+            padding: 12px;
+            width: 65%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 12px 18px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        li {
+            list-style: none;
+            background: #1e293b;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>My To-Do List</h1>
+
+        <input type="text" id="taskInput" placeholder="Enter your task">
+        <button onclick="addTask()">Add</button>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            let input = document.getElementById("taskInput");
+            let task = input.value.trim();
+
+            if (task === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.textContent = task;
+
+            document.getElementById("taskList").appendChild(li);
+
+            input.value = "";
+        }
+    </script>
+
+</body>
+</html>

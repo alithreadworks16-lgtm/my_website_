@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>My To-Do List</title>
 
     <style>
@@ -21,19 +22,22 @@
 
         input {
             padding: 12px;
-            width: 60%;
+            width: 55%;
             border: none;
             border-radius: 8px;
             font-size: 16px;
         }
 
         button {
-            padding: 12px 18px;
+            padding: 12px 16px;
             margin-left: 5px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+        }
+
+        ul {
+            padding: 0;
         }
 
         li {
@@ -42,6 +46,30 @@
             margin: 10px 0;
             padding: 12px;
             border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .task {
+            flex: 1;
+            text-align: left;
+        }
+
+        .done {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .done-btn {
+            background: green;
+            color: white;
+        }
+
+        .delete-btn {
+            background: red;
+            color: white;
         }
     </style>
 </head>
@@ -52,7 +80,11 @@
 
     <h1>My To-Do List</h1>
 
-    <input type="text" id="taskInput" placeholder="Enter your task">
+    <input
+        type="text"
+        id="taskInput"
+        placeholder="Enter your task"
+    >
 
     <button id="addButton">Add</button>
 
@@ -61,6 +93,7 @@
 </div>
 
 <script>
+
     const input = document.getElementById("taskInput");
     const button = document.getElementById("addButton");
     const list = document.getElementById("taskList");
@@ -76,12 +109,36 @@
 
         const li = document.createElement("li");
 
-        li.textContent = task;
+        const taskText = document.createElement("span");
+        taskText.textContent = task;
+        taskText.className = "task";
+
+        const doneButton = document.createElement("button");
+        doneButton.textContent = "Done";
+        doneButton.className = "done-btn";
+
+        doneButton.addEventListener("click", function() {
+            taskText.classList.toggle("done");
+        });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.className = "delete-btn";
+
+        deleteButton.addEventListener("click", function() {
+            li.remove();
+        });
+
+        li.appendChild(taskText);
+        li.appendChild(doneButton);
+        li.appendChild(deleteButton);
 
         list.appendChild(li);
 
         input.value = "";
+
     });
+
 </script>
 
 </body>

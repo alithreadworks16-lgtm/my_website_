@@ -120,6 +120,7 @@
     function showTasks() {
 
         list.innerHTML = "";
+        taskCount.textContent = "Total Tasks: " + tasks.length;
 
         tasks.forEach(function(task, index) {
 

@@ -118,7 +118,7 @@
             }
 
             const doneButton = document.createElement("button");
-            doneButton.textContent = "Done";
+            doneButton.textContent = task.done ? "Undo" : "Done";
             doneButton.className = "done-btn";
 
             doneButton.addEventListener("click", function() {

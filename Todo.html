@@ -71,6 +71,12 @@
             background: red;
             color: white;
         }
+
+        #clearButton {
+            background: orange;
+            color: white;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
@@ -87,23 +93,30 @@
     >
 
     <button id="addButton">Add</button>
+
     <button id="clearButton">Clear All</button>
-       
+
     <ul id="taskList"></ul>
 
 </div>
+
 <script>
+
     const input = document.getElementById("taskInput");
     const button = document.getElementById("addButton");
+    const clearButton = document.getElementById("clearButton");
     const list = document.getElementById("taskList");
 
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
 
     function saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 
+
     function showTasks() {
+
         list.innerHTML = "";
 
         tasks.forEach(function(task, index) {
@@ -118,60 +131,126 @@
                 taskText.classList.add("done");
             }
 
+
             const doneButton = document.createElement("button");
+
             doneButton.textContent = task.done ? "Undo" : "Done";
+
             doneButton.className = "done-btn";
 
+
             doneButton.addEventListener("click", function() {
+
                 tasks[index].done = !tasks[index].done;
+
                 saveTasks();
+
                 showTasks();
+
             });
+
 
             const deleteButton = document.createElement("button");
+
             deleteButton.textContent = "Delete";
+
             deleteButton.className = "delete-btn";
 
+
             deleteButton.addEventListener("click", function() {
+
                 tasks.splice(index, 1);
+
                 saveTasks();
+
                 showTasks();
+
             });
 
+
             li.appendChild(taskText);
+
             li.appendChild(doneButton);
+
             li.appendChild(deleteButton);
 
             list.appendChild(li);
+
         });
+
     }
+
 
     button.addEventListener("click", function() {
 
         const task = input.value.trim();
 
         if (task === "") {
+
             alert("Please enter your task");
+
             return;
+
         }
 
+
         tasks.push({
+
             text: task,
+
             done: false
+
         });
 
+
         saveTasks();
+
         showTasks();
 
         input.value = "";
+
     });
+
+
     input.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        button.click();
-    }
-});
+
+        if (event.key === "Enter") {
+
+            button.click();
+
+        }
+
+    });
+
+
+    clearButton.addEventListener("click", function() {
+
+        if (tasks.length === 0) {
+
+            alert("There are no tasks to clear.");
+
+            return;
+
+        }
+
+
+        const confirmClear = confirm("Are you sure you want to delete all tasks?");
+
+        if (confirmClear) {
+
+            tasks = [];
+
+            saveTasks();
+
+            showTasks();
+
+        }
+
+    });
+
 
     showTasks();
+
 </script>
 
 </body>

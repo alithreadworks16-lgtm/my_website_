@@ -123,6 +123,11 @@
 
         list.innerHTML = "";
         taskCount.textContent = "Total Tasks: " + tasks.length;
+        const completed = tasks.filter(function(task) {
+    return task.done;
+}).length;
+
+completedCount.textContent = "Completed Tasks: " + completed;
 
         tasks.forEach(function(task, index) {
 

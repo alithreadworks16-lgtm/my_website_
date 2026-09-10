@@ -129,6 +129,13 @@
 }).length;
 
 completedCount.textContent = "Completed Tasks: " + completed;
+        let progress = 0;
+
+if (tasks.length > 0) {
+    progress = (completed / tasks.length) * 100;
+}
+
+document.getElementById("progress").textContent = "Progress: " + progress + "%";
 
         tasks.forEach(function(task, index) {
 

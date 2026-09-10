@@ -172,6 +172,18 @@ document.getElementById("progress").textContent = "Progress: " + progress + "%";
             const editButton = document.createElement("button");
 
 editButton.textContent
+            editButton.addEventListener("click", function() {
+
+    const newTask = prompt("Edit your task:", task.text);
+
+    if (newTask !== null && newTask.trim() !== "") {
+        tasks[index].text = newTask.trim();
+
+        saveTasks();
+        showTasks();
+    }
+
+});
 
             deleteButton.textContent = "Delete";
 

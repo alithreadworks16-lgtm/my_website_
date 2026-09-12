@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Weather App</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        input {
+            padding: 12px;
+            width: 220px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #weatherCard {
+            max-width: 350px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #1e293b;
+            border-radius: 20px;
+        }
+
+        #weatherResult {
+            font-size: 20px;
+            line-height: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Weather App 🌦️</h1>
+
+    <input
+        type="text"
+        id="cityInput"
+        placeholder="Enter city"
+    >
+
+    <button id="searchButton">
+        Search
+    </button>
+
+    <div id="weatherCard">
+        <div id="weatherResult">
+            Search a city to see weather
+        </div>
+    </div>
+
+
+    <script>
+
+        let searchButton = document.getElementById("searchButton");
+
+        searchButton.addEventListener("click", function() {
+
+            let city = document.getElementById("cityInput").value;
+
+            if (city === "") {
+                document.getElementById("weatherResult").textContent =
+                    "Please enter a city";
+                return;
+            }
+
+            document.getElementById("weatherResult").textContent =
+                "Loading... ⏳";
+
+            let locationUrl =
+                "https://geocoding-api.open-meteo.com/v1/search?name="
+                + city
+                + "&count=1&language=en&format=json";
+
+            fetch(locationUrl)
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    if (!data.results) {
+
+                        document.getElementById("weatherResult").textContent =
+                            "City not found ❌";
+
+                        return;
+                    }
+
+                    let location = data.results[0];
+
+                    let latitude = location.latitude;
+                    let longitude = location.longitude;
+
+                    let weatherUrl =
+                        "https://api.open-meteo.com/v1/forecast?latitude="
+                        + latitude
+                        + "&longitude="
+                        + longitude
+                        + "&current=temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m";
+
+                    fetch(weatherUrl)
+
+                        .then(response => response.json())
+
+                        .then(weatherData => {
+
+                            let temperature =
+                                weatherData.current.temperature_2m;
+
+                            let weatherCode =
+                                weatherData.current.weather_code;
+
+                            let humidity =
+                                weatherData.current.relative_humidity_2m;
+
+                            let windSpeed =
+                                weatherData.current.wind_speed_10m;
+
+                            let condition = "Unknown";
+
+                            if (weatherCode === 0) {
+                                condition = "☀️ Clear Sky";
+                            } else if (weatherCode <= 3) {
+                                condition = "☁️ Cloudy";
+                            } else if (weatherCode >= 51 && weatherCode <= 67) {
+                                condition = "🌧️ Rain";
+                            } else if (weatherCode >= 71 && weatherCode <= 77) {
+                                condition = "❄️ Snow";
+                            } else if (weatherCode >= 80 && weatherCode <= 82) {
+                                condition = "🌧️ Rain Showers";
+                            } else if (weatherCode >= 95) {
+                                condition = "⛈️ Thunderstorm";
+                            }
+
+                            document.getElementById("weatherResult").innerHTML =
+                                "<h2>" + location.name + "</h2>" +
+                                "<p>🌡️ Temperature: " + temperature + "°C</p>" +
+                                "<p>🌤️ Condition: " + condition + "</p>" +
+                                "<p>💧 Humidity: " + humidity + "%</p>" +
+                                "<p>💨 Wind Speed: " + windSpeed + " km/h</p>";
+
+                        })
+
+                        .catch(function() {
+
+                            document.getElementById("weatherResult").textContent =
+                                "Weather data load nahi ho saka ❌";
+
+                        });
+
+                })
+
+                .catch(function() {
+
+                    document.getElementById("weatherResult").textContent =
+                        "Internet ya API problem hai ❌";
+
+                });
+
+        });
+
+    </script>
+
+</body>
+</html>
